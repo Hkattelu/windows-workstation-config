@@ -32,6 +32,8 @@ The YASB bar replaces the visible Windows taskbar. Its two workflow widgets are:
 Clone the private repository, open PowerShell in it, and run:
 
 ```powershell
+gh repo clone Hkattelu/windows-workstation-config
+Set-Location windows-workstation-config
 Set-ExecutionPolicy -Scope Process Bypass
 .\setup.ps1 -InstallApps -ArchiveDesktopShortcuts
 ```
