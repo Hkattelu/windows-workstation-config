@@ -198,7 +198,8 @@ Write-TemplatedFile (Join-Path $repoRoot 'glazewm\config.yaml') $glazeConfig @{
 
 Write-Step 'Applying OneCommander preferences'
 $oneCommanderSettings = Join-Path $env:LOCALAPPDATA 'OneCommander\Settings\OneCommanderV3.json'
-if (Get-Process -Name OneCommander -ErrorAction SilentlyContinue) {
+$oneCommanderWasRunning = [bool](Get-Process -Name OneCommander -ErrorAction SilentlyContinue)
+if ($oneCommanderWasRunning) {
     Stop-Process -Name OneCommander -Force
     Start-Sleep -Milliseconds 500
 }
@@ -258,6 +259,9 @@ if (-not $NoRestart) {
     Write-Step 'Reloading the desktop tools'
     if ($powerToysWasRunning -and $powerToys) {
         Start-Process -FilePath $powerToys -WindowStyle Hidden
+    }
+    if ($oneCommanderWasRunning -and $oneCommander) {
+        Start-Process -FilePath $oneCommander -ArgumentList "`"$EditingLibraryPath`""
     }
     if ($yasbc) {
         & $yasbc reload --silent
