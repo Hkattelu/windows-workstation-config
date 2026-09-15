@@ -1,0 +1,124 @@
+# Real Bizarre Desktop: four persistent work modes with YASB integration.
+general:
+  # setup.ps1 replaces this placeholder with the local YASB CLI path.
+  startup_commands: ['shell-exec __YASBC__ start --silent']
+  shutdown_commands: ['shell-exec __YASBC__ stop --silent']
+  config_reload_commands: []
+  focus_follows_cursor: false
+  toggle_workspace_on_refocus: false
+  cursor_jump:
+    enabled: false
+    trigger: monitor_focus
+  hide_method: cloak
+  show_all_in_taskbar: false
+
+gaps:
+  scale_with_dpi: true
+  inner_gap: 8px
+  outer_gap:
+    top: 8px
+    right: 8px
+    bottom: 8px
+    left: 8px
+
+window_effects:
+  focused_window:
+    border: { enabled: true, color: '#8eafaa' }
+    hide_title_bar: { enabled: false }
+    corner_style: { enabled: false, style: rounded }
+    transparency: { enabled: false, opacity: '100%' }
+  other_windows:
+    border: { enabled: true, color: '#34393f' }
+    hide_title_bar: { enabled: false }
+    corner_style: { enabled: false, style: rounded }
+    transparency: { enabled: false, opacity: '100%' }
+
+window_behavior:
+  initial_state: tiling
+  state_defaults:
+    floating: { centered: false, shown_on_top: false }
+    fullscreen: { maximized: true, shown_on_top: false }
+
+# Numeric names keep YASB sorting deterministic; display_name is what the bar shows.
+workspaces:
+  - name: '1'
+    display_name: 'GAME'
+    keep_alive: true
+  - name: '2'
+    display_name: 'VIDEO'
+    keep_alive: true
+  - name: '3'
+    display_name: 'CREATE'
+    keep_alive: true
+  - name: '4'
+    display_name: 'BIZ'
+    keep_alive: true
+
+window_rules:
+  - commands: [ignore]
+    match:
+      - window_process: { equals: zebar }
+      - window_process: { equals: yasb }
+      - window_title: { equals: Command Palette }
+        window_class: { equals: WinUIDesktopWin32WindowClass }
+      - window_process: { equals: PowerToys }
+        window_title: { regex: '.*? - Peek' }
+      - window_title: { regex: '[Pp]icture.in.[Pp]icture' }
+        window_class: { regex: 'Chrome_WidgetWin_1|MozillaDialogClass' }
+
+  # GAME — ChatGPT, Godot, and local build testing.
+  - commands: ['move --workspace 1']
+    match:
+      - window_process: { regex: '(?i)^(godot.*|chatgpt)$' }
+      - window_title: { regex: '(?i).*death by deadline.*' }
+
+  # VIDEO — editing, capture, encoding, and stream control.
+  - commands: ['move --workspace 2']
+    match:
+      - window_process: { regex: '(?i)^(resolve|obs64|handbrake|shutter-encoder)$' }
+
+  # CREATE — visual art, 3D, and audio production.
+  - commands: ['move --workspace 3']
+    match:
+      - window_process: { regex: '(?i)^(krita|blender|fl64|audacity|reaper|inkscape|lively)$' }
+
+  # BIZ — planning, communication, and studio operations.
+  - commands: ['move --workspace 4']
+    match:
+      - window_process: { regex: '(?i)^(linear|notion|slack|discord|zoom)$' }
+
+  # Native dialogs float without forcing their parent creative apps to float.
+  - commands: [set-floating]
+    match:
+      - window_class: { equals: '#32770' }
+
+binding_modes: []
+
+# Left modifiers avoid consuming right-Alt/AltGr.
+keybindings:
+  - commands: ['focus --workspace 1']
+    bindings: ['lalt+lshift+1']
+  - commands: ['focus --workspace 2']
+    bindings: ['lalt+lshift+2']
+  - commands: ['focus --workspace 3']
+    bindings: ['lalt+lshift+3']
+  - commands: ['focus --workspace 4']
+    bindings: ['lalt+lshift+4']
+  - commands: ['move --workspace 1', 'focus --workspace 1']
+    bindings: ['lalt+lshift+lctrl+1']
+  - commands: ['move --workspace 2', 'focus --workspace 2']
+    bindings: ['lalt+lshift+lctrl+2']
+  - commands: ['move --workspace 3', 'focus --workspace 3']
+    bindings: ['lalt+lshift+lctrl+3']
+  - commands: ['move --workspace 4', 'focus --workspace 4']
+    bindings: ['lalt+lshift+lctrl+4']
+  - commands: [toggle-floating]
+    bindings: ['lalt+lshift+space']
+  - commands: [toggle-fullscreen]
+    bindings: ['lalt+lshift+f']
+  - commands: [wm-toggle-pause]
+    bindings: ['lalt+lshift+p']
+  - commands: [wm-exit]
+    bindings: ['lalt+lshift+e']
+  - commands: [wm-reload-config]
+    bindings: ['lalt+lshift+r']

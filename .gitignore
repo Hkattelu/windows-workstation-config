@@ -1,0 +1,29 @@
+# This repository contains configuration, never application data.
+*.backup-*
+*.log
+*.etl
+*.db
+*.sqlite*
+*.dat
+*.tmp
+*.dmp
+
+# Histories, sessions, caches, and credentials.
+**/state.json
+**/history/**
+**/recent/**
+**/cache/**
+**/logs/**
+**/thumbnails/**
+**/tabs*.json
+**/favorites*.json
+**/auth.json
+**/*token*
+**/*secret*
+**/*license*
+
+# Local editor and OS noise.
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

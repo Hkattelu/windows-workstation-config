@@ -1,0 +1,523 @@
+/*
+  REAL BIZARRE DESKTOP — YASB 2.0.7
+
+  Accent toggle:
+    Color on  -> --active-accent: var(--accent-color);
+    Color off -> --active-accent: var(--accent-neutral);
+*/
+
+:root {
+  --active-accent: var(--accent-color);
+  --accent-color: #8eafaa;
+  --accent-neutral: #e8eeeb;
+
+  --bar-bg: #0d1114;
+  --surface: #151b1f;
+  --surface-raised: #1a2227;
+  --surface-hover: #222c31;
+  --border: #2b363b;
+  --border-strong: #3c494f;
+  --text: #e3e9e6;
+  --text-dim: #9aa5a3;
+  --text-faint: #697573;
+  --danger: #d9787d;
+}
+
+* {
+  color: var(--text);
+  font-family: "Segoe UI Variable Text", "Segoe UI";
+  font-size: 12px;
+  font-weight: 550;
+}
+
+.yasb-bar {
+  background-color: var(--bar-bg);
+  border-top: 1px solid var(--border);
+}
+
+.container-left,
+.container-center,
+.container-right {
+  margin: 0;
+  padding: 0 4px;
+}
+
+.widget {
+  margin: 4px 2px;
+  padding: 0 8px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+.widget .label {
+  color: var(--text-dim);
+}
+
+.widget:hover {
+  background-color: var(--surface-hover);
+  border-color: var(--border);
+}
+
+/* YASB now carries the taskbar role: launcher, running apps, and previews. */
+.home-widget,
+.taskbar-widget {
+  background-color: var(--surface);
+  border-color: var(--border);
+}
+
+.home-widget {
+  margin-left: 5px;
+  padding: 0 10px;
+}
+
+.home-widget .icon {
+  color: var(--active-accent);
+  font-family: "Segoe UI Symbol", "Segoe UI";
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.home-menu,
+.taskbar-preview {
+  color: var(--text);
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+}
+
+.home-menu .menu-item {
+  padding: 7px 34px 7px 14px;
+  color: var(--text-dim);
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+.home-menu .menu-item:hover {
+  color: var(--text);
+  background-color: var(--surface-hover);
+}
+
+.home-menu .separator {
+  max-height: 1px;
+  background-color: var(--border);
+}
+
+.taskbar-widget {
+  padding: 0 4px;
+}
+
+.taskbar-widget .app-container {
+  margin: 1px 2px;
+  padding: 0 7px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.taskbar-widget .app-container:hover {
+  background-color: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+
+.taskbar-widget .app-container.foreground {
+  background-color: var(--active-accent);
+  border-color: var(--active-accent);
+}
+
+.taskbar-widget .app-container.running {
+  border-bottom-color: var(--text-faint);
+}
+
+.taskbar-widget .app-container.running.minimized {
+  opacity: 0.55;
+}
+
+.taskbar-widget .app-container .app-count {
+  margin-left: 5px;
+  padding: 0 4px;
+  color: var(--text);
+  background-color: var(--border-strong);
+  border-radius: 4px;
+  font-family: "Cascadia Mono", "Consolas";
+  font-size: 10px;
+}
+
+.taskbar-preview .preview-item {
+  padding: 8px;
+  background-color: var(--surface-raised);
+}
+
+.taskbar-preview .preview-item:hover {
+  background-color: var(--surface-hover);
+}
+
+.taskbar-preview .header .title {
+  color: var(--text);
+}
+
+.taskbar-preview .close-button {
+  color: var(--text-dim);
+  background-color: transparent;
+  border-radius: 4px;
+}
+
+.taskbar-preview .close-button:hover {
+  color: var(--text);
+  background-color: var(--danger);
+}
+
+/* Work modes: one active state, one accent. */
+.glazewm-workspaces {
+  margin: 4px 3px 4px 5px;
+  padding: 0 4px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.glazewm-workspaces .ws-btn {
+  min-height: 28px;
+  margin: 1px 2px;
+  padding: 0 10px;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-faint);
+  font-family: "Cascadia Mono", "Consolas";
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.glazewm-workspaces .ws-btn.populated {
+  color: var(--text-dim);
+}
+
+.glazewm-workspaces .ws-btn:hover,
+.glazewm-workspaces .ws-btn.populated:hover {
+  background-color: var(--surface-hover);
+  color: var(--text);
+}
+
+.glazewm-workspaces .ws-btn.active_populated,
+.glazewm-workspaces .ws-btn.active_empty,
+.glazewm-workspaces .ws-btn.focused_populated,
+.glazewm-workspaces .ws-btn.focused_empty {
+  background-color: var(--active-accent);
+  color: var(--bar-bg);
+  font-weight: 700;
+}
+
+.glazewm-workspaces .offline-status {
+  padding: 0 10px;
+  color: var(--danger);
+  font-family: "Cascadia Mono", "Consolas";
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.glazewm-tiling-direction {
+  margin: 4px 2px;
+  padding: 0;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+
+.glazewm-tiling-direction .btn {
+  min-width: 28px;
+  padding: 0 6px;
+  color: var(--text-dim);
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+}
+
+.glazewm-tiling-direction .btn:hover {
+  color: var(--text);
+  background-color: var(--surface-hover);
+}
+
+/* Current context stays quiet until it matters. */
+.active-window-widget {
+  margin: 4px 12px;
+  padding: 0 14px;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.active-window-widget .label {
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.active-window-widget .icon {
+  margin-right: 7px;
+}
+
+/* Production telemetry: compact, readable, and neutral. */
+.cpu-widget,
+.memory-widget,
+.gpu-widget,
+.codex-usage,
+.dnd-widget,
+.microphone-widget,
+.volume-widget,
+.clock-widget,
+.systray {
+  background-color: var(--surface);
+  border-color: var(--border);
+}
+
+.cpu-widget .label,
+.memory-widget .label,
+.gpu-widget .label,
+.codex-usage .label,
+.dnd-widget .label,
+.microphone-widget .label,
+.volume-widget .label,
+.clock-widget .label {
+  color: var(--text-dim);
+  font-family: "Cascadia Mono", "Consolas";
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.codex-usage .progress-container {
+  margin-right: 6px;
+}
+
+.dnd-widget .icon.status-disabled,
+.dnd-widget .label.status-disabled {
+  color: var(--text-faint);
+}
+
+.dnd-widget .icon.status-priority,
+.dnd-widget .label.status-priority {
+  color: var(--active-accent);
+}
+
+.dnd-widget .icon.status-alarms,
+.dnd-widget .label.status-alarms {
+  color: var(--danger);
+}
+
+.clock-widget {
+  margin-right: 5px;
+  padding: 0 12px;
+}
+
+.clock-widget .label {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.microphone-widget .label.muted,
+.microphone-widget .icon.muted,
+.volume-widget .label.muted,
+.volume-widget .icon.muted {
+  color: var(--danger);
+}
+
+.cpu-widget .label.status-low,
+.cpu-widget .label.status-medium,
+.cpu-widget .label.status-high,
+.memory-widget .label.status-low,
+.memory-widget .label.status-medium,
+.memory-widget .label.status-high,
+.gpu-widget .label.status-low,
+.gpu-widget .label.status-medium,
+.gpu-widget .label.status-high {
+  color: var(--text-dim);
+}
+
+.cpu-widget .label.status-critical,
+.memory-widget .label.status-critical,
+.gpu-widget .label.status-critical {
+  color: var(--danger);
+}
+
+.systray {
+  padding: 0 5px;
+}
+
+.systray .button {
+  margin: 0 2px;
+  padding: 2px;
+  border-radius: 4px;
+}
+
+.systray .button:hover,
+.systray .unpinned-visibility-btn:hover {
+  background-color: var(--surface-hover);
+}
+
+.systray .unpinned-visibility-btn {
+  min-width: 18px;
+  min-height: 22px;
+  padding: 0 3px;
+  color: var(--text-dim);
+  background-color: transparent;
+  border: none;
+}
+
+/* Shared popups match the bar instead of looking like separate apps. */
+QToolTip,
+.cpu-popup,
+.memory-popup,
+.gpu-popup,
+.audio-menu,
+.microphone-menu,
+.calendar,
+.systray-popup {
+  color: var(--text);
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+}
+
+.codex-usage-menu {
+  min-width: 340px;
+  color: var(--text);
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+}
+
+.codex-usage-menu .header,
+.codex-usage-menu .section,
+.codex-usage-menu .page-nav {
+  border-bottom: 1px solid var(--border);
+}
+
+.codex-usage-menu .header {
+  padding: 9px 14px;
+}
+
+.codex-usage-menu .header .text,
+.codex-usage-menu .period-value,
+.codex-usage-menu .page-indicator {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.codex-usage-menu .section,
+.codex-usage-menu .page {
+  padding: 9px 14px;
+}
+
+.codex-usage-menu .section .title,
+.codex-usage-menu .section-title,
+.codex-usage-menu .activity-title,
+.codex-usage-menu .period-name,
+.codex-usage-menu .details .name,
+.codex-usage-menu .details .value {
+  color: var(--text-dim);
+}
+
+.codex-usage-menu .section .progress,
+.codex-usage-menu .model-bar,
+.codex-usage-menu .heatmap .cell {
+  background-color: var(--border);
+}
+
+.codex-usage-menu .section .progress .fill,
+.codex-usage-menu .model-bar .fill,
+.codex-usage-menu .heatmap .cell.level-1,
+.codex-usage-menu .heatmap .cell.level-2,
+.codex-usage-menu .heatmap .cell.level-3,
+.codex-usage-menu .heatmap .cell.level-4 {
+  background-color: var(--active-accent);
+}
+
+.codex-usage-menu .section .progress.low .fill {
+  background-color: #d0aa68;
+}
+
+.codex-usage-menu .section .remaining.low {
+  color: #d0aa68;
+}
+
+.codex-usage-menu .section .progress.critical .fill {
+  background-color: var(--danger);
+}
+
+.codex-usage-menu .section .remaining.critical,
+.codex-usage-menu .details .error {
+  color: var(--danger);
+}
+
+.cpu-popup .header,
+.memory-popup .header,
+.gpu-popup .header {
+  background-color: transparent;
+}
+
+.cpu-popup .cpu-graph,
+.memory-popup .memory-graph,
+.gpu-popup .gpu-graph {
+  color: var(--active-accent);
+}
+
+.cpu-popup .cpu-graph-grid,
+.memory-popup .memory-graph-grid,
+.gpu-popup .gpu-graph-grid {
+  color: var(--border);
+}
+
+.cpu-popup .stats .stat-item,
+.memory-popup .stats .stat-item,
+.gpu-popup .stats .stat-item {
+  margin: 5px;
+  padding: 7px 10px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.audio-menu .device,
+.microphone-menu .device {
+  margin: 2px 0;
+  padding: 6px 8px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+}
+
+.audio-menu .device:hover,
+.audio-menu .device.selected,
+.microphone-menu .device:hover,
+.microphone-menu .device.selected {
+  background-color: var(--surface-hover);
+}
+
+.calendar .calendar-table,
+.calendar .calendar-table::item {
+  color: var(--text-dim);
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.calendar .calendar-table::item:selected {
+  color: var(--bar-bg);
+  background-color: var(--active-accent);
+  border-radius: 4px;
+}
+
+.calendar .day-label,
+.calendar .month-label,
+.calendar .date-label {
+  color: var(--text);
+}
+
+.calendar .date-label {
+  color: var(--active-accent);
+}
+
+.systray-popup-container {
+  padding: 8px;
+  background-color: var(--surface-raised);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+}
