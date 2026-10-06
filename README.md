@@ -1,17 +1,20 @@
-# Real Bizarre Windows workstation
+# Himanshu's Windows setup for Real Bizarre Software
 
-A portable version of the current desktop: GlazeWM work modes, a custom YASB taskbar, OneCommander’s dark dual-pane preferences, PowerToys Command Palette, and the tap-the-Windows-key launcher.
+A portable version of my windows workstation config. I use this configuration for my windows machines for game development. It emulates a fun and simple linux dev environment, but in windows:
 
-The repository contains configuration only. It deliberately excludes credentials, Codex authentication, recent commands, file-manager favorites and tabs, thumbnails, logs, databases, and application binaries.
+* GlazeWM work modes
+* A custom YASB taskbar
+* OneCommander’s dark dual-pane preferences
+* PowerToys Command Palette
 
 ## What this sets up
 
 | Workspace | Purpose | Automatically routed apps |
 | --- | --- | --- |
-| `1 GAME` | game development and build testing | Godot, ChatGPT, Death by Deadline windows |
+| `1 GAME` | game development and build testing | Godot, ChatGPT |
 | `2 VIDEO` | editing, recording, and encoding | DaVinci Resolve, OBS, HandBrake, Shutter Encoder |
-| `3 CREATE` | art, 3D, and audio | Krita, Blender, FL Studio, Audacity, REAPER, Inkscape, Lively |
-| `4 BIZ` | planning and studio operations | Linear, Notion, Slack, Discord, Zoom |
+| `3 CREATE` | art, 3D, and audio | Krita, Blender, FL Studio, Lively |
+| `4 BIZ` | planning and studio operations | Chrome, Canva, Discord |
 
 Workspace shortcuts use left Alt so right Alt/AltGr remains available:
 
@@ -55,14 +58,6 @@ The script backs up every overwritten settings file beside the original, resolve
 
 The Codex widget uses the installed Codex CLI and its existing ChatGPT login. No authentication file is stored here. If the widget displays `--` on the laptop, install/open Codex, sign in once, then middle-click the widget to refresh.
 
-## What is intentionally not copied
-
-- `~\.codex` and all authentication material
-- OneCommander Favorites, Tabs, folder-view and thumbnail databases
-- Command Palette `state.json` and recent-command history
-- AutoHotkey binaries or any other installers
-- Monitor coordinates and window positions
-- logs, caches, crash dumps, or license data
 
 ## Layout
 
