@@ -45,6 +45,12 @@ an environment variable is not covered. The helper starts with Windows via
 AutoHotkey v2, and can be disabled by removing its Startup shortcut and exiting
 its process.
 
+Discord's maximize button is guarded separately: when the active Discord
+window enters GlazeWM's maximized fullscreen state, it becomes a floating
+window sized to the current workspace, keeping the reserved bar space clear.
+Other apps and deliberate game fullscreen are unaffected. The guard starts
+with Windows; removing its Startup shortcut and exiting its process disables it.
+
 ## Put it on another Windows PC
 
 Clone the private repository, open PowerShell in it, and run:

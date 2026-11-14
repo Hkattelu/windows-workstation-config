@@ -224,6 +224,10 @@ Write-TemplatedFile (Join-Path $repoRoot 'powertoys\windows-key-launcher\Windows
 $agentWindowsDir = Join-Path $env:LOCALAPPDATA 'Minimal Desktop\BackgroundAgentWindows'
 $agentWindowsScript = Join-Path $agentWindowsDir 'BackgroundAgentWindows.ahk'
 Write-TemplatedFile (Join-Path $repoRoot 'agent-windows\BackgroundAgentWindows.ahk') $agentWindowsScript
+$discordBoundsDir = Join-Path $env:LOCALAPPDATA 'Minimal Desktop\DiscordBounds'
+$discordBoundsScript = Join-Path $discordBoundsDir 'KeepDiscordAboveBar.ahk'
+Write-TemplatedFile (Join-Path $repoRoot 'discord-window\KeepDiscordAboveBar.ahk') $discordBoundsScript
+Write-TemplatedFile (Join-Path $repoRoot 'discord-window\RestoreDiscordBounds.ps1') (Join-Path $discordBoundsDir 'RestoreDiscordBounds.ps1')
 
 Write-Step 'Creating Startup and Start menu shortcuts'
 $startup = [Environment]::GetFolderPath('Startup')
@@ -250,6 +254,7 @@ if ($oneCommander) {
 if ($autoHotkey) {
     New-PortableShortcut (Join-Path $startup 'Windows key - Command Palette.lnk') $autoHotkey "`"$launcherScript`"" $launcherDir
     New-PortableShortcut (Join-Path $startup 'Background agent windows.lnk') $autoHotkey "`"$agentWindowsScript`"" $agentWindowsDir
+    New-PortableShortcut (Join-Path $startup 'Discord above bar.lnk') $autoHotkey "`"$discordBoundsScript`"" $discordBoundsDir
 } else {
     Write-Warning 'AutoHotkey v2 was not found; the Windows-key Command Palette shortcut was not created.'
 }
@@ -263,6 +268,7 @@ if (-not $NoRestart) {
     Write-Step 'Reloading the desktop tools'
     if ($autoHotkey) {
         Start-Process -FilePath $autoHotkey -ArgumentList "`"$agentWindowsScript`"" -WindowStyle Hidden
+        Start-Process -FilePath $autoHotkey -ArgumentList "`"$discordBoundsScript`"" -WindowStyle Hidden
     }
     if ($powerToysWasRunning -and $powerToys) {
         Start-Process -FilePath $powerToys -WindowStyle Hidden
