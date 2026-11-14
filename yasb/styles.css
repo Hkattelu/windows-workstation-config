@@ -539,10 +539,29 @@ QToolTip,
 }
 
 .bluetooth-menu QScrollArea,
+.bluetooth-menu QScrollArea QWidget,
 .bluetooth-menu .bluetooth-list,
 .bluetooth-menu .section {
   background-color: #1a2227;
   border: none;
+}
+
+.bluetooth-menu QScrollBar:vertical {
+  background-color: #151b1f;
+  width: 12px;
+  border: none;
+}
+
+.bluetooth-menu QScrollBar::handle:vertical {
+  background-color: #6d7c79;
+  border-radius: 5px;
+  min-height: 24px;
+}
+
+.bluetooth-menu QScrollBar::add-line:vertical,
+.bluetooth-menu QScrollBar::sub-line:vertical {
+  background-color: #151b1f;
+  height: 0px;
 }
 
 .bluetooth-menu .header .title,
