@@ -221,6 +221,9 @@ Write-TemplatedFile (Join-Path $repoRoot 'powertoys\command-palette\settings.jso
 $launcherDir = Join-Path $env:LOCALAPPDATA 'Minimal Desktop\WindowsKeyLauncher'
 $launcherScript = Join-Path $launcherDir 'WindowsKeyLauncher.ahk'
 Write-TemplatedFile (Join-Path $repoRoot 'powertoys\windows-key-launcher\WindowsKeyLauncher.ahk') $launcherScript
+$agentWindowsDir = Join-Path $env:LOCALAPPDATA 'Minimal Desktop\BackgroundAgentWindows'
+$agentWindowsScript = Join-Path $agentWindowsDir 'BackgroundAgentWindows.ahk'
+Write-TemplatedFile (Join-Path $repoRoot 'agent-windows\BackgroundAgentWindows.ahk') $agentWindowsScript
 
 Write-Step 'Creating Startup and Start menu shortcuts'
 $startup = [Environment]::GetFolderPath('Startup')
@@ -246,6 +249,7 @@ if ($oneCommander) {
 
 if ($autoHotkey) {
     New-PortableShortcut (Join-Path $startup 'Windows key - Command Palette.lnk') $autoHotkey "`"$launcherScript`"" $launcherDir
+    New-PortableShortcut (Join-Path $startup 'Background agent windows.lnk') $autoHotkey "`"$agentWindowsScript`"" $agentWindowsDir
 } else {
     Write-Warning 'AutoHotkey v2 was not found; the Windows-key Command Palette shortcut was not created.'
 }
@@ -257,6 +261,9 @@ if ($ArchiveDesktopShortcuts) {
 
 if (-not $NoRestart) {
     Write-Step 'Reloading the desktop tools'
+    if ($autoHotkey) {
+        Start-Process -FilePath $autoHotkey -ArgumentList "`"$agentWindowsScript`"" -WindowStyle Hidden
+    }
     if ($powerToysWasRunning -and $powerToys) {
         Start-Process -FilePath $powerToys -WindowStyle Hidden
     }

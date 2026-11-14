@@ -36,6 +36,15 @@ Windows battery icon is enabled in the tray when supplied by Windows; on
 Windows 10 its flyout can provide the performance slider. Power plans and the
 Windows power-mode slider are separate controls.
 
+Quiet Godot agent runs cannot be assigned to a GlazeWM workspace because their
+windows cannot take focus. The background-window helper lowers only unfocusable
+Godot windows whose command lines contain `--agent-background` or the dedicated
+`addons/agent_background/launch.tscn` scene. It does not move them to GAME,
+send input, or change ordinary interactive play. A launch marked only through
+an environment variable is not covered. The helper starts with Windows via
+AutoHotkey v2, and can be disabled by removing its Startup shortcut and exiting
+its process.
+
 ## Put it on another Windows PC
 
 Clone the private repository, open PowerShell in it, and run:
