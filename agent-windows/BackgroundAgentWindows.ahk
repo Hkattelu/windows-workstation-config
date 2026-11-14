@@ -48,9 +48,9 @@ InspectWindows() {
             if commandLine = ""
                 continue
             if IsAgentRun(commandLine) {
-                ; HWND_BOTTOM; no move, resize, activation or owner reordering.
+                ; HWND_BOTTOM; async, no move, resize, activation or owner reordering.
                 ok := DllCall("SetWindowPos", "ptr", hwnd, "ptr", 1,
-                    "int", 0, "int", 0, "int", 0, "int", 0, "uint", 0x0213, "int")
+                    "int", 0, "int", 0, "int", 0, "int", 0, "uint", 0x4213, "int")
                 if !ok
                     continue
             }
