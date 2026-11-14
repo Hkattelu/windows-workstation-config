@@ -76,10 +76,51 @@ bars:
         - "gpu"
         - "microphone"
         - "volume"
+        - "wifi"
+        - "bluetooth"
+        - "battery"
         - "systray"
         - "clock"
 
 widgets:
+  battery:
+    type: "yasb.battery.BatteryWidget"
+    options:
+      label: "BAT {percent}%"
+      label_alt: "BAT {percent}% | {time_remaining}"
+      update_interval: 5000
+      hide_unsupported: true
+      callbacks:
+        on_left: "toggle_label"
+        on_right: "exec cmd.exe /c start ms-settings:powersleep"
+
+  wifi:
+    type: "yasb.custom.CustomWidget"
+    options:
+      label: "WIFI"
+      label_alt: "WIFI"
+      class_name: "wifi-shortcut"
+      callbacks:
+        on_left: "exec cmd.exe /c start ms-settings:network-wifi"
+        on_right: "exec cmd.exe /c start ms-settings:network"
+
+  bluetooth:
+    type: "yasb.bluetooth.BluetoothWidget"
+    options:
+      label: "BT"
+      label_alt: "BT {device_count}"
+      callbacks:
+        on_left: "toggle_menu"
+        on_right: "toggle_label"
+      menu_config:
+        blur: true
+        round_corners: true
+        round_corners_type: small
+        border_color: "#303b40"
+        alignment: right
+        direction: up
+        offset_top: 6
+
   home:
     type: "yasb.home.HomeWidget"
     options:
@@ -377,7 +418,7 @@ widgets:
         direction: up
         offset_top: 6
         offset_left: 0
-      show_battery: false
+      show_battery: true
       show_volume: false
       show_network: false
       tooltip: true

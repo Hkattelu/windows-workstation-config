@@ -30,6 +30,12 @@ The YASB bar replaces the visible Windows taskbar. Its two workflow widgets are:
 - `CODEX`: remaining allowance at a glance. Left-click opens details, middle-click refreshes, and right-click switches limit windows.
 - `FOCUS`: Windows Do Not Disturb. Left-click toggles it, middle-click reveals the state name, and right-click cycles Off → Priority → Alarms.
 
+The bar includes `WIFI` for Windows Wi-Fi settings, `BT` for the Bluetooth
+menu, and `BAT` for charge information (right-click opens power settings). The
+Windows battery icon is enabled in the tray when supplied by Windows; on
+Windows 10 its flyout can provide the performance slider. Power plans and the
+Windows power-mode slider are separate controls.
+
 ## Put it on another Windows PC
 
 Clone the private repository, open PowerShell in it, and run:
