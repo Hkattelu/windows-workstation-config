@@ -521,3 +521,124 @@ QToolTip,
   border: 1px solid var(--border-strong);
   border-radius: 8px;
 }
+
+/* Bluetooth and Codex popup contrast. */
+.bluetooth-menu {
+  color: #e3e9e6;
+  background-color: #1a2227;
+  border: 1px solid #3c494f;
+  border-radius: 8px;
+  min-width: 360px;
+  min-height: 400px;
+}
+
+.bluetooth-menu .header,
+.bluetooth-menu .footer {
+  padding: 10px 12px;
+  background-color: #151b1f;
+}
+
+.bluetooth-menu QScrollArea,
+.bluetooth-menu .bluetooth-list,
+.bluetooth-menu .section {
+  background-color: #1a2227;
+  border: none;
+}
+
+.bluetooth-menu .header .title,
+.bluetooth-menu .section-title,
+.bluetooth-menu .bluetooth-item .name,
+.bluetooth-menu .bluetooth-item .battery,
+.bluetooth-menu .footer .settings-button {
+  color: #e3e9e6;
+}
+
+.bluetooth-menu .bluetooth-item .status {
+  color: #becbc7;
+}
+
+.bluetooth-menu .bluetooth-item {
+  padding: 6px 12px;
+  margin: 2px 4px;
+  border-radius: 5px;
+  background-color: #1a2227;
+}
+
+.bluetooth-menu .bluetooth-item:hover,
+.bluetooth-menu .bluetooth-item.active {
+  background-color: #2b363b;
+}
+
+.bluetooth-menu .header .power-button,
+.bluetooth-menu .bluetooth-item .connect {
+  color: #e3e9e6;
+  background-color: #343f44;
+  border: 1px solid #52615f;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+.bluetooth-menu .header .power-button:checked {
+  color: #0d1114;
+  background-color: #8eafaa;
+}
+
+.bluetooth-menu .footer .settings-button,
+.bluetooth-menu .footer .scan-icon {
+  background-color: transparent;
+  border: none;
+}
+
+.bluetooth-menu .bluetooth-item .icon,
+.bluetooth-menu .bluetooth-item .battery-icon,
+.bluetooth-menu .footer .scan-icon,
+.codex-usage-menu .header .refresh,
+.codex-usage-menu .page-button,
+.codex-usage-menu .month-nav {
+  font-family: "Segoe MDL2 Assets";
+  color: #e3e9e6;
+}
+
+.codex-usage-menu .header .refresh,
+.codex-usage-menu .page-button,
+.codex-usage-menu .month-nav {
+  background-color: #283338;
+  border: 1px solid #52615f;
+  border-radius: 4px;
+  min-width: 26px;
+  min-height: 26px;
+}
+
+.codex-usage-menu .header .refresh:hover,
+.codex-usage-menu .page-button:hover,
+.codex-usage-menu .month-nav:hover {
+  background-color: #3c494f;
+}
+
+.codex-usage-menu .page-button:disabled,
+.codex-usage-menu .month-nav:disabled {
+  color: #899693;
+}
+
+.codex-usage-menu .section .used,
+.codex-usage-menu .section .remaining,
+.codex-usage-menu .section .reset,
+.codex-usage-menu .section .date,
+.codex-usage-menu .refresh-status,
+.codex-usage-menu .empty-state,
+.codex-usage-menu .model-name,
+.codex-usage-menu .model-value,
+.codex-usage-menu .month-label,
+.codex-usage-menu .heatmap .weekday,
+.codex-usage-menu .history-note,
+.codex-usage-menu .reset-credits-count,
+.codex-usage-menu .reset-credit-title,
+.codex-usage-menu .reset-credit-expiration {
+  color: #d2dcd8;
+}
+
+.bluetooth-menu .error-message,
+.codex-usage-menu .details .error {
+  color: #ffc9cb;
+  background-color: #702e34;
+}
