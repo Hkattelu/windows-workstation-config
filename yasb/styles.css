@@ -661,3 +661,81 @@ QToolTip,
   color: #ffc9cb;
   background-color: #702e34;
 }
+
+/* Taskbar context and hardware popup contrast. */
+.context-menu {
+  color: #e3e9e6;
+  background-color: #1a2227;
+  border: 1px solid #3c494f;
+  border-radius: 6px;
+  padding: 4px;
+}
+
+.context-menu::item {
+  color: #e3e9e6;
+  background-color: transparent;
+  padding: 7px 22px;
+  border-radius: 4px;
+}
+
+.context-menu::item:selected {
+  color: #ffffff;
+  background-color: #3c494f;
+}
+
+.context-menu::item:disabled {
+  color: #9aa5a3;
+  background-color: transparent;
+}
+
+.context-menu::separator {
+  height: 1px;
+  background-color: #52615f;
+  margin: 4px 6px;
+}
+
+.cpu-popup .header .text,
+.memory-popup .header .text,
+.gpu-popup .header .text,
+.cpu-popup .stats .stat-value,
+.memory-popup .stats .stat-value,
+.gpu-popup .stats .stat-value {
+  color: #e3e9e6;
+}
+
+.cpu-popup .stats .stat-label,
+.memory-popup .stats .stat-label,
+.gpu-popup .stats .stat-label,
+.cpu-popup .graph-title,
+.memory-popup .graph-title,
+.gpu-popup .graph-title {
+  color: #becbc7;
+}
+
+.cpu-popup .header .pin-btn,
+.memory-popup .header .pin-btn,
+.gpu-popup .header .pin-btn {
+  font-family: "Segoe MDL2 Assets";
+  font-size: 14px;
+  color: #e3e9e6;
+  background-color: #343f44;
+  border: 1px solid #52615f;
+  border-radius: 4px;
+  min-width: 28px;
+  min-height: 28px;
+}
+
+.cpu-popup .header .pin-btn:hover,
+.memory-popup .header .pin-btn:hover,
+.gpu-popup .header .pin-btn:hover {
+  color: #ffffff;
+  background-color: #52615f;
+}
+
+.cpu-popup .header .pin-btn.pinned,
+.memory-popup .header .pin-btn.pinned,
+.gpu-popup .header .pin-btn.pinned {
+  color: #0d1114;
+  background-color: #8eafaa;
+  border-color: #8eafaa;
+}
